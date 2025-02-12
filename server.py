@@ -12,7 +12,7 @@ def national_id() -> str:
     # TODO use this
     # print(request.files.get('file').read())
 
-    national_id = f"{randint(0, 1e14-1):013}"
+    national_id = f"{randint(0, 1e13-1):013}"
 
     if len(national_id) != 13:
         return "national ID must have 13 digits", 400
