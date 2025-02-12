@@ -6,13 +6,15 @@ app = Flask(__name__)
 
 @app.route("/national_id", methods=["POST"])
 def national_id():
+    """ Use to detect national ID from voice sample """
     # TODO use this
     # print(request.files.get('file').read())
 
-    return f"{randint(0, 1e14-1):013}"
+    national_id = f"{randint(0, 1e14-1):013}"
 
 @app.route("/detect_agree", methods=["POST"])
 def detect_agree():
+    """ Use to detect if the user agree to all terms and conditions from voice sample """
     # TODO use this
     # print(request.files.get('file').read())
 
@@ -20,11 +22,11 @@ def detect_agree():
 
 @app.route("/address", methods=["POST"])
 def address():
-    """ Get the address, need to be called twice """
+    """ Get the address, need to be called twice (home address and incident address) """
     # print(request.files.get('name').stream)
     # TODO get transcription from voice sample
     transcription = "12/3 ซอย ZZZ แขวง X เขต Y จังหวัด Z"
-        
+    
     return {
         ""
     }
