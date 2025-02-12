@@ -35,12 +35,26 @@ def detect_agree() -> bool:
 
 @app.route("/address", methods=["POST"])
 def address() -> dict[str, str]:
-    """ Get the address, need to be called twice (home address and incident address) """
+    """ Get the address from the voice sample, need to be called twice (home address and incident address) """
     # print(request.files.get('name').stream)
     # TODO get transcription from voice sample
     transcription = "12/3 ซอย ZZZ แขวง X เขต Y จังหวัด Z เลขไปรษณีย์ 99999"
 
     return split_address(transcription)
+
+
+@app.route("/transcribe", methods=["POST"])
+def transcribe() -> dict[str, str]:
+    """ Get the transcription of the incident and the classification from the voice sample """
+    # print(request.files.get('name').stream)
+    # TODO get transcription from voice sample
+    transcription = "โดนทุบหัว" + " bluh" * 40
+    incident_type = "แย่งชิงทรัพย์"
+
+    return {
+        "transcription": transcription,
+        "incident_type": incident_type,
+    }
 
 
 if __name__ == "__main__":
