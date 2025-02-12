@@ -1,6 +1,7 @@
 from flask import Flask, request
 from random import randint
 from waitress import serve
+from helper.address import split_address
 
 app = Flask(__name__)
 
@@ -25,11 +26,9 @@ def address():
     """ Get the address, need to be called twice (home address and incident address) """
     # print(request.files.get('name').stream)
     # TODO get transcription from voice sample
-    transcription = "12/3 ซอย ZZZ แขวง X เขต Y จังหวัด Z"
+    transcription = "12/3 ซอย ZZZ แขวง X เขต Y จังหวัด Z เลขไปรษณีย์ 99999"
     
-    return {
-        ""
-    }
+    return split_address(transcription)
 
 if __name__ == "__main__":
     serve(app, port=5000)
