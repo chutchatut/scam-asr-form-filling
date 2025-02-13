@@ -1,4 +1,5 @@
 from datetime import datetime
+from .thai_number import thai_text_to_number
 
 MONTH_STR_TO_INT = {
     "มกรา": 1,
@@ -36,9 +37,8 @@ def parse_date(transcription: str) -> datetime:
 
     day, month, year = parts
 
-    # TODO might need to convert date and year from text to int
-    day = int(day)
-    year = int(year)
+    day = thai_text_to_number(day)
+    year = thai_text_to_number(year)
 
     if month not in MONTH_STR_TO_INT:
         raise Exception('unknown month format')
