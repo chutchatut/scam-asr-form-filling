@@ -57,5 +57,20 @@ def transcribe() -> dict[str, str]:
     }
 
 
+@app.route("/transcribe", methods=["POST"])
+def detect_gender() -> str:
+    """ Get the gender from the voice sample """
+    # print(request.files.get('name').stream)
+    # TODO get transcription from voice sample
+    transcription = "เพศ ชาย"
+
+    gender = transcription.replace("อื่นอื่น", "อื่นๆ").replace("เพศ", "").strip()
+
+    if gender not in ['ชาย', 'หญิง', "อื่นๆ"]:
+        return "invalid gender", 400
+
+    return gender
+
+
 if __name__ == "__main__":
     serve(app, port=5000)
