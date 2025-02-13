@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 from .thai_number import thai_text_to_number
 
 MONTH_STR_TO_INT = {
@@ -29,7 +29,7 @@ MONTH_STR_TO_INT = {
 }
 
 
-def parse_date(transcription: str) -> datetime:
+def parse_date(transcription: str) -> date:
     parts = transcription.strip().split()
 
     if len(parts) != 3:
@@ -48,4 +48,4 @@ def parse_date(transcription: str) -> datetime:
     if year > 2400:
         year -= 543
 
-    return datetime(year, month, day)
+    return date(year, month, day)

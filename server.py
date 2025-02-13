@@ -1,7 +1,7 @@
 from flask import Flask, request
 from random import randint
 from waitress import serve
-from datetime import datetime
+from datetime import date
 from helper.address import split_address
 from helper.date import parse_date
 
@@ -92,7 +92,7 @@ def detect_if_user_went() -> bool:
 
 
 @app.route("/get_date", methods=["POST"])
-def get_date() -> datetime:
+def get_date() -> date:
     """ Get date from the voice sample """
     # print(request.files.get('name').stream)
     # TODO get transcription from voice sample
@@ -105,7 +105,7 @@ def get_date() -> datetime:
 
 
 @app.route("/get_phone_provider", methods=["POST"])
-def get_date() -> str:
+def get_phone_provider() -> str:
     """ Get phone provider from the voice sample """
     # print(request.files.get('name').stream)
     # TODO get transcription from voice sample
