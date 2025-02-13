@@ -121,5 +121,24 @@ def get_date() -> str:
     return provider
 
 
+@app.route("/get_prev_contact_location", methods=["POST"])
+def get_prev_contact_location() -> str:
+    """ Get previous contact location from the voice sample """
+    # print(request.files.get('name').stream)
+    # TODO get transcription from voice sample
+    transcription = "ลาดพร้าว"
+    location = transcription.strip()
+
+    # TODO use some edit distance magic
+    if location not in [
+        'สถานีตำรวจ'
+        'กองบัญชาการตำรวจสืบสวนสอบสวนอาชญากรรมทางเทคโนโลยี',
+        'กองบัญชาการตำรวจสอบสวนกลาง (ลาดพร้าว)'
+    ]:
+        return 'unknown location', 400
+
+    return location
+
+
 if __name__ == "__main__":
     serve(app, port=5000)
