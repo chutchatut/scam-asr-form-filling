@@ -92,14 +92,14 @@ def detect_if_user_went() -> bool:
 
 
 @app.route("/get_date", methods=["POST"])
-def get_date() -> date:
+def get_date() -> str:
     """ Get date from the voice sample """
     # print(request.files.get('name').stream)
     # TODO get transcription from voice sample
     transcription = "5 มกรา 2012"
 
     try:
-        return parse_date(transcription)
+        return parse_date(transcription).strftime('%Y-%m-%d')
     except Exception as e:
         return repr(e), 400
 
