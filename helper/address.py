@@ -8,7 +8,8 @@ def split_address(transcription: str) -> dict[str, str]:
     subdistrict, transcription = transcription.split("เขต")
     district, transcription = transcription.split("จังหวัด")
     # remove all occurance of word related to area code and just use the number as area code
-    transcription = transcription.replace("เลขที่", "").replace("เลข", "").replace("ไปรษณีย์", "").strip()
+    transcription = transcription\
+        .replace("เลขที่", "").replace("เลข", "").replace("ไปรษณีย์", "").strip()
     area_code_delim_idx = len(transcription)
     while transcription[area_code_delim_idx-1].isdigit():
         area_code_delim_idx -= 1
