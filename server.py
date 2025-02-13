@@ -129,6 +129,14 @@ def get_prev_contact_location() -> str:
     transcription = "ลาดพร้าว"
     location = transcription.strip()
 
+    # TODO add more detection keywords
+
+    if 'ลาดพร้าว' in location:
+        location = 'กองบัญชาการตำรวจสอบสวนกลาง (ลาดพร้าว)'
+
+    if 'สวนกลาง' in location:
+        location = 'กองบัญชาการตำรวจสอบสวนกลาง (ลาดพร้าว)'
+
     # TODO use some edit distance magic
     if location not in [
         'สถานีตำรวจ'
