@@ -75,6 +75,22 @@ def detect_gender() -> str:
     return gender
 
 
+@app.route("/detect_yes_no", methods=["POST"])
+def detect_yes_no() -> bool:
+    """ Detect if the user want to reinput from the voice sample """
+    # print(request.files.get('name').stream)
+    # TODO get transcription from voice sample
+    transcription = "ไม่ต้องการ"
+
+    if 'ไม่' in transcription:
+        return False
+
+    if 'ต้องการ' in transcription or 'ใช่' in transcription:
+        return True
+
+    return "invalid option", 400
+
+
 @app.route("/detect_if_user_went", methods=["POST"])
 def detect_if_user_went() -> bool:
     """ Detect if user went to the CIB from the voice sample """
